@@ -1,0 +1,23 @@
+\begin{tikzpicture}[x=5.65em,y=5em]
+
+	\tikzstyle{block} = [rectangle, draw, thick,
+    		text width=5em, text centered, rounded corners, minimum height=5em]
+	\tikzstyle{block_marked} = [block, fill=MidnightBlue, text=white, font=\bfseries]
+	\tikzstyle{plaintext} = [draw=none,fill=none,text width=6em, text centered]
+	\tikzstyle{line} = [draw, ->,>=stealth, thick, rounded corners]
+
+
+    \node [block] at (-1.5, 0) {Mission planner};
+    \node [block_marked] at (0, 0) {Path planner};
+    \node [block] at (1.5, 0) {Guidance system};
+    \node [block] at (0, -1.5) {Navigation system};
+    
+    \node [plaintext] at (-0.75, 0.75) {Mission};
+    \node [plaintext] at (0.75, 0.75) {Path};
+    \node [plaintext] at (0.5, -0.75) {Navigation data};
+    
+    \path [line] (0.5, 0) -- (1,0);
+    \path [line] (0,-1) -- (0, -0.5);
+    \path [line] (-1,0) -- (-0.5, 0);
+    
+\end{tikzpicture}

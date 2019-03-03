@@ -1,0 +1,90 @@
+\chapter{Introduction}
+
+In the context of marine ships, a \gls{route} is a sequence of waypoints on a sea map that the ship should follow in order to reach a goal. A route may be manually selected by a human navigator before transit, or computed by simple or advanced planning methods.
+
+This thesis is concerned with sustainable route planning for ships using \gls{digital_twin}. More specifically, this thesis is concerned with optimal route planning which is validated according to industrial standards using Kongsberg Maritime ECDIS and is benchmarked using the high-fidelity industrial simulation environment K-Sim.
+
+
+\section{Motivation}
+
+An important motivation for using optimal route planning is to generate more efficient routes. At sea, the shortest or fastest route for the ship to follow is not necessarily the most optimal. For the route to be optimal, also parameters such as weather, sea state, current, safety, etc.\ needs to be considered. Particularily in the ferry and shipping industry, an efficient route is a route that \textbf{reduces environmental impact} and \textbf{increases economic growth} \parencite{bitar2017}. This leads to an optimization problem which may be hard to solve by human or simple route planners based on metric distances. This motivates route planning based on optimality.
+
+A motivation for validating routes using the DNV approved ECDIS from Kongsberg Maritime is to gain practical use of the routes in the industry. Every year there are many optimal route planning algorithms proposed by the academic community, but if they can not be validated according to industrial standards, they are difficult to trust in practice. If the routes can be validated, planning becomes easier for the navigator and new solution are more acceptable. 
+
+A motivation for benchmarking by using a high-fidelity industrial simulation environment such as K-Sim, is to increase the credibility of optimality. Getting acceptance for optimality with the use of empiric data or simple ship models has proven hard. The complexity of empiric data and lack of knowing all disturbances gives questionable results. Also, simple ship models may lack important dynamics which gives questionable results. Thus, it is desirable to test performance with a deterministic simulation environment that replicates the real dynamics of the system, such that optimal routes can be benchmarked to manual routes.
+
+
+\iffalse
+Motivation
+* Digital twin
+	* Not only dependent on metric distances
+* More efficient routes
+	* Reduce environmental impact
+	* Increase economic growth
+	* ++
+* Easy to use
+* Proposed algorithms
+	* Validate
+\fi
+
+
+
+\section{Previous work}
+
+Much progress has been made in the area of planning in robotics over the past decades, where the basic problem is defined as finding a path or trajectory for a robot between a start state and a goal without colliding with obstacles in the environment.
+
+The introduction of incremental sampling-based planners, such as probabilistic roadmaps (PRM) and rapidly-exploring random trees (RRT) enabled solving planning problems in high-dimensional state spaces in reasonable computation time, even though the problem is known to be PSPACE-hard \parencite{latombe1991}. PRM and RRT also posess theoretical guarantees such as probabilistically complete, which means that a feasible solution will be found, if one exists, with a probability approaching one if one lets the algorithm run long enough. While RRT provides efficient exploration of high-dimensional state spaces, dynamically feasible trajectories, and demonstrated applicability to complex motion planning applications \parencite{kuwata2009},  it has also been shown to converge almost surely to non-optimal solutions \parencite{sertac2011}. Consequently, many variations of RRT have been developed in different directions in order to increase performance. 
+
+One of the more popular extensions of RRT called RRT* was introduced by \cite{sertac2011} that additionally achieves asymptotic optimality, i.e.\ an optimal solution based on a cost will be found with a probability approaching one. While RRT* provides efficient exploration in high-dimensional state spaces, probabilistic completeness and asymptotic optimality, it may not converge to the optimum in feasible time in practice. Consequently, many extensions of RRT* try to improve the convergence speed. Examples are \parencite{lee2017}.
+
+
+
+
+Extensive work has also been carried out by LaValle in the field of categorizing and describing planning algorithms in general motion planning. His valuable work is extensively used as a basis for much of the work done in planning algorithms for autonomous ships today. An example is the categorization of path-planning methods introduced in \cite{bitar2017} related to autonomous ships, which is used as a basis for the methods introduced in this thesis. 
+
+In context of marine ships, planning is normally utilized in multiple levels, whether it is controlled by human or control systems. The lowest level of planning, sometimes called the guidance system, considers avoiding immediate collision and should react to sudden dangers in the local horizon. The highest level of planning, route planning, which only considers static obstacles and is not updated online, considers leading the ship to the goal, advantageously in an optimal manner. Deliberately, there may exist other path planners with larger horizon than the guidance system and more online than the route planner. This scope of the route planner is illustrated in \autoref{fig:scope}.
+
+\begin{figure}[h]
+\centering
+\subfloat[Architecture] {
+	\centering
+    \includegraphics{tikz/scope}
+    \label{fig:scope_architecture}
+}
+
+\subfloat[Illustration] {
+	\centering
+    \includegraphics{tikz/scope_illustration}
+    \label{fig:scope_illustration}
+}
+
+\caption{The scope of route planning}
+\label{fig:scope}
+    
+\end{figure}
+
+
+
+\section{Problem description}
+
+The main goal of this research project is to explore, understand and implement closed loop optimal route planning solutions coupled to an industrial validation system Kongsberg ECDIS and maritime industrial simulator K-SIM for verification. The theoretical work includes: 
+
+\begin{enumerate}
+\item Literature study of optimal route planning and weighting of mixed optimality routing
+\item Implementation of optimal route planning in MATLAB.
+\item Implementation of closed loop planning and validation using Kongsberg Maritime ECDIS.
+\item Implementation of route benchmarking using Kongsberg Digital Maritime Simulator.
+\item Performance analysis and comparison of different route planners.
+\item Evaluate if the ECDIS rules are reasonable or should change in order to make room for more efficient routes.
+\end{enumerate}
+
+
+
+\section{Contributions}
+
+The main contribution of this thesis is a literature study of optimal route planners, and their implementation and performance analysis.
+
+
+\section{Outline}
+
+\autoref{ch:theory} presents theoretical background about the route planning methods and test frameworks. \autoref{ch:implementation} presents the implementation of the route planning methods and interfacing to the test frameworks. Finally, \autoref{ch:results} presents and discusses simulation results, and \autoref{ch:conclusion} concludes the research with suggestions further work.

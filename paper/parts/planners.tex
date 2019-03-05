@@ -80,6 +80,38 @@ The RRT* algorithm was introduced by \parencite{sertac2011} as an extention to R
 
 \section{Kinodynamic RRT*}
 
+A RRT* variation that considers linear dynamics was introduced by \parencite{webb2013}, which still guarantees asymptotical optimality. Asymptotical optimality is even shown to be guaranteed for linearized nonlinear dynamics. The method is outlined in \autoref{alg:rrt_star_kinodynamic}.
+
+\begin{algorithm}
+\caption{Kinodynamic RRT*}\label{alg:rrt_star_kinodynamic}
+\begin{algorithmic}[1]
+\Procedure{KinodynamicRRT*$(\textbf{x}_ {start} \in \mathcal{X}_{free}, \textbf{x}_ {goal} \in \mathcal{X}_{goal}$)}{}
+\State $\mathcal{T} \gets \mathtt{INIT\_TREE}(\textbf{x}_ {start})$
+\For {$i \in N$}
+\State $\textbf{x}_ {i} \gets \mathtt{SAMPLE\_RANDOM(\mathcal{X}_{free} )}$
+\State $\textbf{x} \gets \text{argmin} \{\textbf{x} \in \mathcal{T} \ |\ c^*(\textbf{x}, \textbf{x}_i) < r \land \mathtt{COLLISION\_FREE}(\pi^*(\textbf{x},\textbf{x}_i))\}  (\mathtt{cost}(\textbf{x}) + c^*(\textbf{x},\textbf{x}_i))$
+\State $\mathtt{parent}(\textbf{x}_i) \gets \textbf{x}$
+\State $\mathtt{cost}(\textbf{x}_i) \gets \mathtt{cost}(\textbf{x}) + c^*(\textbf{x},\textbf{x}_i)$
+\ForAll {$\{ \textbf{x} \in \mathcal{T} \cup \{\textbf{x}_{goal}\} \ |\  c^*(\textbf{x}_i, \textbf{x}) < r \land \mathtt{cost}(\textbf{x}_i) + c^*(\textbf{x}_i, \textbf{x}) < \mathtt{cost}(\textbf{x}) \land \mathtt{COLLISION\_FREE}(\pi^*(\textbf{x}_i, \textbf{x}))  \}$}
+\State $\mathtt{parent}(\textbf{x}) \gets \textbf{x}_i$
+\State $\mathtt{cost}(\textbf{x}) \gets \mathtt{cost}(\textbf{x}_i) + c^*(\textbf{x}_i,\textbf{x})$
+\EndFor
+\State $\mathcal{T} \gets \mathcal{T} \cup \{ \textbf{x}_i \}$
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The tree $\mathcal{T}$ is represented as a set of states. Each state $\textbf{x}$ in the tree has two attributes: a pointer $\mathtt{parent}(\textbf{x})$ to its parent state in the tree, and a number $\mathtt{cost}(\textbf{x})$ which stores the cost of the trajectory in the tree between the start state $\textbf{x}_{start}$ and $\textbf{x}$
+
+\begin{equation}
+  \mathtt{COLLISION\_FREE}(\pi(\textbf{x}(),\textbf{u}(),\tau) = \forall \{ t \in [0,\tau] \} \ (\textbf{x}(t) \in \mathcal{X}_{free} \land \textbf{u}(t) \in \mathcal{U}_{free})
+\end{equation}
+ 
+
+
+
+
 \section{A*}
 \section{Theta*}
 \section{Voronoi diagram (\gls{vd})}

@@ -1,0 +1,31 @@
+\begin{tikzpicture}[x=5.65em,y=5em]
+
+	\tikzstyle{block} = [rectangle, draw, thick,
+    		text width=5em, text centered, rounded corners, minimum height=5em]
+	\tikzstyle{block_marked} = [block, fill=MidnightBlue, text=white, font=\bfseries]
+	\tikzstyle{plaintext} = [draw=none,fill=none,text width=6em, text centered]
+	\tikzstyle{line} = [draw, ->,>=stealth, thick, rounded corners]
+
+	\umlactor[x=-1, y=0]{Mission planner} 
+    %\node [block] at (-1.5, 0) {Mission planner};
+    \umlactor[x=0, y=1]{Path planner} 
+    \umlusecase[x=0, y=0]{Transit ship} 
+    %\node [block_marked] at (0, 0) {Path planner};
+    \umlactor[x=1, y=0]{Guidance system} 
+    %\node [block] at (1.5, 0) {Guidance system};
+     \umlactor[x=0, y=-1]{Navigation system} 
+    %\node [block] at (0, -1.5) {Navigation system};
+    \umlassoc{Mission planner}{usecase-1} 
+    \umlassoc{Path planner}{usecase-1} 
+    \umlassoc{Guidance system}{usecase-1} 
+    \umlassoc{Navigation system}{usecase-1} 
+    
+    %\node [plaintext] at (-0.75, 0.75) {Mission};
+    %\node [plaintext] at (0.75, 0.75) {Path};
+    %\node [plaintext] at (0.5, -0.75) {Navigation Data};
+    
+    %\path [line] (0.5, 0) -- (1,0);
+    %\path [line] (0,-1) -- (0, -0.5);
+    %\path [line] (-1,0) -- (-0.5, 0);
+    
+\end{tikzpicture}

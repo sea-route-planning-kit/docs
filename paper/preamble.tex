@@ -1,0 +1,185 @@
+\documentclass{report}
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{bm,nicefrac}
+\usepackage[plain]{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algpseudocode}
+%\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{array, makecell}
+\usepackage[draft]{todonotes}
+\usepackage{amssymb}
+\usepackage{booktabs,caption}
+\usepackage[flushleft]{threeparttable}
+
+% Hyperref
+\usepackage{hyperref}
+\renewcommand{\chapterautorefname}{Chapter}
+
+% UTF8 decoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Biblatex
+\usepackage[backend=biber,style=ieee,citestyle=authoryear]{biblatex}
+\addbibresource{references.bib}
+
+% Table
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Subplotting
+\usepackage{subfig}
+
+% Rotated table header
+\usepackage{adjustbox}
+\usepackage{array}
+
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{45}{1em}}}
+
+% Definition
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%% TIkz
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols, plotmarks}
+\usepackage{tikz-uml}
+
+    \newcommand*\diff{\mathop{}\!\mathrm{d}}
+    
+    % Sub sub sub section
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\usepackage[table]{colortbl}
+
+\usepackage[titletoc]{appendix}
+
+
+% References in content
+
+\usepackage[nottoc]{tocbibind}
+
+%% Glossaries
+    
+\usepackage[acronym,automake,nonumberlist]{glossaries}
+\usepackage[automake]{glossaries}
+
+%% MATLAB list
+
+\usepackage{listings}
+
+\usepackage[numbered,framed]{matlab-prettifier}
+
+% Abbreviations
+\newacronym{hjb}{HJB}{Hamilton-Jacobi-Bellman equation}
+\newacronym{vd}{VD}{Voronoi diagram}
+\newacronym{cd}{CD}{Cell decomposition}
+\newacronym{vg}{VG}{Visibility graph}
+\newacronym{pr}{PR}{Probabilistic roadmap}
+\newacronym{rrt}{RRT}{Rapidly-exploring random tree}
+\newacronym{pp}{PP}{Pontryagin's principle}
+\newacronym{dp}{DP}{Dynamic programming}
+\newacronym{dda}{DDA}{Direct discretized approximation}
+\newacronym{dhjb}{DHJB}{Discretized Hamilton-Jacobi-Bellman}
+\newacronym{ps}{PS}{Pseudospectral method}
+\newacronym{gnc}{GNC}{Guidance, navigation, control}
+\newacronym{ocp}{OCP}{Optimal control problem}
+\newacronym{dof}{DOF}{Degree of freedom}
+
+% Nomenclature
+\newglossaryentry{route}{
+  name = route,
+  description =   {Sequence of waypoints on a map that the ship should follow in order to reach a goal},
+}
+\newglossaryentry{digital_twin}{
+  name = digital twin,
+  description =   {Real time digital replica of a physical device},
+}
+\newglossaryentry{eta}{
+  name = $\boldsymbol{\eta}$,
+  description =   {Ship state $[x,y,\psi]^T$},
+}
+\newglossaryentry{x}{
+  name = $x$ ,
+  description = North position in NED frame,
+}
+\newglossaryentry{y}{
+  name = $y$ ,
+  description = East position in NED frame,
+}
+\newglossaryentry{psi}{
+  name = $\psi$ ,
+  description = Yaw angle,
+}
+\newglossaryentry{u}{
+  name = $u$ ,
+  description = Surge linear velocity,
+}
+\newglossaryentry{u_d}{
+  name = $u_d$ ,
+  description = Desired surge linear velocity,
+}
+\newglossaryentry{v}{
+  name = $v$ ,
+  description = Sway linear velocity,
+}
+\newglossaryentry{r}{
+  name = $r$ ,
+  description = Yaw angular velocity,
+}
+\newglossaryentry{U}{
+  name = $U$ ,
+  description = Linear speed,
+}
+\newglossaryentry{U_d}{
+  name = $U_d$ ,
+  description = Desired linear speed,
+}
+\newglossaryentry{beta}{
+  name = $\beta$ ,
+  description = Sideslip angle,
+}
+\newglossaryentry{e}{
+  name = $e$ ,
+  description = Cross-track error,
+}
+\newglossaryentry{s}{
+  name = $s$ ,
+  description = Along-track error,
+}
+\newglossaryentry{tau}{
+  name = $\tau$ ,
+  description = {Control input vector},
+}
+\newglossaryentry{X}{
+  name = $X$ ,
+  description = Surge force,
+}
+\newglossaryentry{Y}{
+  name = $Y$ ,
+  description = Sway force,
+}
+\newglossaryentry{N}{
+  name = $N$ ,
+  description = Yaw moment,
+}
+
+
+
+\glsunsetall
+\makeglossaries
+

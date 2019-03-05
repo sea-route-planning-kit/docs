@@ -1,0 +1,92 @@
+
+\chapter{Route planning methods}
+
+\section{Formal problem description}
+
+\iffalse
+Differential or non-holonomic constraints can be described by a forward propagation function $f : \mathcal{X} \times \mathcal{U} \to \dot{\mathcal{X}} $, where $\mathcal{X}$ and $\mathcal{U}$ represent the state and control spaces, respectively \parencite{lee2017}.
+
+By feasible it should consider
+\begin{itemize}
+  \item Non-holonomic or inequality constraints caused by avoiding collision with land.
+  \item Differential constraints caused by the kinodynamic system.
+\end{itemize}
+
+Closed-loop planning.
+
+Non-linear dynamics.
+
+Single query.
+
+Kinodynamic planning.
+
+
+not holonomic robots, kinodynamic
+
+\fi
+
+The route planning problem for ships, as motivated in the introduction, is formalized as an extention to \parencite{webb2013}. Given a start state $\textbf{x}_{start} \in \mathcal{X}_{free}$ and a goal region $\mathcal{X}_{goal} \in \mathcal{X}_{free}$, find the feasible and optimal trajectory $\pi^*_{feasible}$ between $\textbf{x}_{start}$ and $\mathcal{X}_{goal}$ that minimizes a cost $c(\pi)$. That is
+
+\begin{subequations}
+\begin{align}
+\pi^*_{feasible} &= \underset{\pi}{\text{argmin}} \ c(\pi) \\
+\text{s.}& \text{ t.} \nonumber \\
+\textbf{x}(0) &= \textbf{x}_{start} \\
+\textbf{x}(\tau) &\in \mathcal{X}_{goal} \\
+\textbf{x}(t) &\in \mathcal{X}_{free} \ \forall t \in [0,\tau] \\
+\textbf{u}(t) &\in \mathcal{U}_{free} \ \forall t \in [0,\tau]  \\
+\dot{\textbf{x}}(t) &= f(\textbf{x}(t), \textbf{u}(t)) \ \forall t \in [0,\tau] 
+\end{align}
+\end{subequations}
+
+
+
+
+
+
+\section{Classification}
+Grid-based search, Interval-based search, Geometric algorithms, Reward-based algorithms, Artificial potential fields, Sampling-based algorithms
+
+\section{Properties}
+
+
+
+
+
+
+\begin{definition}[Completness \parencite{lavalle2006}]
+A planner is \textbf{complete} if it guarantees a feasible solution in finite time or correctly reports that there is none. If a planner is complete under the condition that the resolution is fine enough, e.g.\ fine enough underlying grid, it is \textbf{resolution complete}. Similarily, if the probability that a planner successfully finds a feasible solution, if one exists, asymptotically approaches one as more work is performed, it is \textbf{probabilistic complete}. \textbf{Incomplete} planners do not guarantee that they produce a feasible solution even if one exists.
+\end{definition}
+
+\begin{definition}[Optimality]
+A planner is \textbf{optimal} if it guarantees to find the global optimum in finite time. A planner is \textbf{asymptotic optimal} if the cost of the solution converges to the global optimum as more work is performed. A planner is \textbf{}.
+\end{definition}
+
+\begin{definition}[Monotone convergence]
+\end{definition}
+
+\begin{definition}[System]
+  A \textbf{holonomic system} is either not constrained by any constraint or constrained only by geometric constraints.  A \textbf{non-holonomic system} is a system whose state depends on the path taken in order to achieve it, typically characterized by differential constraints.
+\end{definition}
+
+
+
+\section{Rapidly-exploring random three (\gls{rrt})}
+
+\section{RRT*}
+
+The RRT* algorithm was introduced by \parencite{sertac2011} as an extention to RRT which is provably asymptotically optimal, i.e.\ the cost of the returned solution converges almost surely to the optimum. 
+
+
+\section{Kinodynamic RRT*}
+
+\section{A*}
+\section{Theta*}
+\section{Voronoi diagram (\gls{vd})}
+\section{Cell decomposition (\gls{cd})}
+\section{Visibility graph (\gls{vg})}
+\section{Probabilistic roadmap (\gls{pr})}
+\section{Pseudospectral (\gls{ps})}
+\section{Pipeline method}
+A* --> RRT --> PS
+

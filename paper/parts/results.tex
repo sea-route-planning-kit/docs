@@ -1,0 +1,35 @@
+\chapter{Results} \label{ch:results}
+
+\section{Simulations}
+
+\section{Comparison}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+  \rot{} & \rot{\textbf{Completeness}} & \rot{\textbf{Optimality}} & \rot{\textbf{System}}\\ \hline
+  A* & \cellcolor{yellow!25}resolution & \cellcolor{yellow!25}resolution & \cellcolor{red!25}holonomic \\ \hline
+  Hybrid-A* & \cellcolor{yellow!25}resolution & \cellcolor{yellow!25}resolution & \cellcolor{green!25}non-holonomic \\ \hline
+  RRT & \cellcolor{yellow!25}probabilistic & \cellcolor{red!25}non-optimal & \cellcolor{green!25}non-holonomic \\ \hline
+  RRT* & \cellcolor{yellow!25}probabilistic & \cellcolor{yellow!25}asymptotic & \cellcolor{green!25}non-holonomic \\ \hline
+  PS & \cellcolor{green!25}complete & \cellcolor{yellow!25}local & \cellcolor{green!25}non-holonomic \\ \hline
+\end{tabular}
+\caption{Properties of route planning methods}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+  \rot{} & \rot{\textbf{ECDIS compliant}} & \rot{\textbf{Travel time}} & \rot{\textbf{Energy consumption}}\\ \hline
+  A* & \cellcolor{green!25}yes &  & \\ \hline
+  Hybrid-A* & \cellcolor{green!25}yes  & & \\ \hline
+  RRT & \cellcolor{green!25}yes & & \\ \hline
+  RRT* & \cellcolor{green!25}yes  & & \\ \hline
+  PS & \cellcolor{green!25}yes & & \\ \hline
+\end{tabular}
+\caption{Performance of route planning methods in Scenario 1}
+\end{table}
+
+
+

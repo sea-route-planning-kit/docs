@@ -1,0 +1,32 @@
+\begin{tikzpicture}[x=5.65em,y=4em]
+
+	\tikzstyle{block} = [rectangle, draw, thick,
+    		text width=5em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{block_marked} = [block, fill=blue, text=white, font=\bfseries]
+	\tikzstyle{plaintext} = [draw=none,fill=none,text width=4em, text centered]
+	\tikzstyle{line} = [draw, ->,>=stealth, thick, rounded corners]
+
+    % Place nodes
+    \node [block] at (0, 0) {Mission planner};
+    \node [block_marked] at (1.25, 0) {Path planner};
+    \node [block] at (2.5, 0) {Guidance system};
+    \node [block] at (3.75, 0) {Control system};
+    \node [block] at (5, 0) {Marine craft};
+    \node [block] at (5, -1.25) {Navigation system};
+    
+    \node [plaintext] at (0.625,0.75) {Waypoints};
+    \node [plaintext] at (1.875,0.75) {Path};
+    \node [plaintext] at (1.75,-1) {State};
+    
+    
+    \path [line] (0.5, 0) -- (0.75,0);
+    \path [line] (1.75, 0) -- (2,0);
+    \path [line] (3, 0) -- (3.25,0);
+    \path [line] (4.25, 0) -- (4.5,0);
+    
+    \path [line] (5.5, 0) |- (5.75,0) |- (5.75,-1.25) -- (5.5,-1.25);
+    \path [line] (4.5, -1.25) |- (3.75,-1.25) -- (3.75,-0.5);
+    \path [line] (4.5, -1.25) |- (2.5,-1.25) -- (2.5,-0.5);
+    \path [line] (4.5, -1.25) |- (1.25,-1.25) -- (1.25,-0.5);
+    
+\end{tikzpicture}
